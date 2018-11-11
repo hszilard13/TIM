@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+	
+	  var markerArray = <?php json_encode($markerArray); ?>;
+      var map;
+	  var zoom;
+	  var center;
+	  var allLat;
+	  var allLng;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'));
+      }
+	  markerArray.forEach(function(marker){
+	    var newMarker = new google.maps.Maker(
+		{
+		  posistion:new google.maps.LatLng(marker.lat,lng: maker.lng),
+		  color: marker.color,
+		  title: marker.name,
+		  descciption: marker.label,
+		  map: map
+		});
+		allLng = allLng + marke.lng;
+		allLat = allLat + marke.lat;
+	  });
+	  center = new google.maps.LatLng(allLat/markerArray.length, allLng/markerArray.length);
+	  zoom = magic;
+	  map.setCenter(center);
+	  map.setZoom(zoom);
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
+    async defer></script>
+  </body>
+</html>
