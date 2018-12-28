@@ -19,10 +19,11 @@
     </style>
   </head>
   <body>
+    <?php session_start(); ?>
+    <?php	$markerArray = $_SESSION['markerArray']; ?>
     <div id="map"></div>
-    <script>
-	
-	  var markerArray = <?php json_encode($markerArray); ?>;
+    <script type='text/javascript'>
+	  var markerArray = <?php json_encode($markerArray); ?>
       var map;
 	  var zoom;
 	  var center;
@@ -34,7 +35,7 @@
 	  markerArray.forEach(function(marker){
 	    var newMarker = new google.maps.Maker(
 		{
-		  posistion:new google.maps.LatLng(marker.lat,lng: maker.lng),
+		  posistion:new google.maps.LatLng(marker.lat, maker.lng),
 		  color: marker.color,
 		  title: marker.name,
 		  descciption: marker.label,
@@ -44,11 +45,10 @@
 		allLat = allLat + marke.lat;
 	  });
 	  center = new google.maps.LatLng(allLat/markerArray.length, allLng/markerArray.length);
-	  zoom = magic;
+	  zoom = 4;
 	  map.setCenter(center);
 	  map.setZoom(zoom);
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
-    async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"async defer></script>
   </body>
 </html>
