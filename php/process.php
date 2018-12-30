@@ -1,3 +1,6 @@
+
+<html>
+<body>
 <?php
  $username = $_POST['username'];
  $password = $_POST['password'];
@@ -20,12 +23,15 @@ while($row = mysqli_fetch_array($result)){
 }
 
 if($good_to_go == 1){
-	echo 'Login succes';
+	header("refresh:1;url = ../html/map.html");
 }else{
 	echo 'Invalid username or password!Please try again!';
-	header("refresh:3;url = login.php");
+	header("refresh:3;url = ../html/login.html");
 
 }
 
 
 ?>
+
+</body>
+</html>
