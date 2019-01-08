@@ -14,7 +14,7 @@ $label = $_POST['label'];
   $retval = mysqli_query($conn, $sql_insert);
   if(! $retval )
   {
-    die('Could not insert data: ' . mysqli_error());
+    die('Could not insert data: ' . mysqli_error($conn));
   }
   echo "Data inserted successfully\n";
   

@@ -22,6 +22,9 @@ while($row = mysqli_fetch_array($result)){
 	
 }
 
+session_start();
+$_SESSION['isAdmin'] = $row['admin'];
+
 if($good_to_go == 1){
 	header("refresh:1;url = ../html/map.html");
 }else{

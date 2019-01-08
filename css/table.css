@@ -1,0 +1,16 @@
+tr, td {
+  border-bottom: 1px solid #ddd;
+}
+
+tr {
+  text-align: left;
+   height: 50px;
+}
+
+table {
+  width: 100%;
+}
+
+p{
+  font-weight: bold;
+}

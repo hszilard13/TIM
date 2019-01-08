@@ -10,9 +10,11 @@
 		<?php session_start(); ?>
         <?php $markerArray = $_SESSION['markerArray']; ?>
 	    var markerArray = <?php echo json_encode($markerArray); ?>;
-        var map;
 		var bounds = new google.maps.LatLngBounds();
-        map = new google.maps.Map(document.getElementById('map'));
+        var map = new google.maps.Map(document.getElementById('map'),{
+			zoom: 4,
+			center: new google.maps.LatLng(parseFloat(markerArray[0].lat), parseFloat(markerArray[0].lng))
+		});
         for(var i = 0; i < markerArray.length; i++)
 		{
 	      var newMarker = new google.maps.Marker(
@@ -21,9 +23,10 @@
 		    color: markerArray[i].color,
 		    title: markerArray[i].name,
 		    label: {text: markerArray[i].label},
-		    map: map
+		    map: map,
+			visible: true
 		  });
-		  bounds.extend(markerArray[i].position);
+		  bounds.extend(new google.maps.LatLng(parseFloat(markerArray[i].lat), parseFloat(markerArray[i].lng)));
 	    }
 		map.fitBounds(bounds);
 	  }
