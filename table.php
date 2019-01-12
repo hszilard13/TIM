@@ -30,14 +30,19 @@ $isAdmin = $_SESSION['admin'];
 <div id = "su">
 <br>
 <form action ="php/store_marker.php" method = "POST">
-<input type ="text" id = "name" name = "name"> 
-<input type ="text" id = "lat" name = "lat"> 
-<input type ="text" id = "lng" name = "lng"> 
-<input type ="text" id = "color" name = "color"> 
-<input type ="text" id = "label" name = "label"> 
+<input type ="text" id = "name" name = "name" placeholder="Name"> 
+<input type ="text" id = "lat" name = "lat" placeholder="Lat"> 
+<input type ="text" id = "lng" name = "lng" placeholder="Lng"> 
+<input type ="text" id = "color" name = "color" placeholder="Color"> 
+<input type ="text" id = "label" name = "label" placeholder="Label"> 
 <input type = "submit" id = "btn" value ="Store"/>
 </form>
-<button onclick="del()"> Delete </button>
+<form>
+<form action ="php/delete_marker.php" method = "POST">
+<p> Enter marker ID to delete it!</p>
+<input type ="text" id = "del" name = "del" placeholder="ID"> 
+<input type = "submit" id = "btn" value ="Delete"/>
+</form>
 <button id="myButton" class="float-left submit-button" >Go to map!</button>
 </div>
 <script type="text/javascript">
@@ -47,7 +52,7 @@ $isAdmin = $_SESSION['admin'];
     };
 	function myFunction() {
     var x = document.getElementById("myDIV");
-    if (admin === "1") {
+    if (admin === "0") {
       x.style.display = "none";
     } else {
       x.style.display = "block";

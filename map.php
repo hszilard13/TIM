@@ -5,9 +5,10 @@
   <title>Google Maps Multiple Markers</title> 
   <script src="http://maps.google.com/maps/api/js?sensor=false" 
           type="text/javascript"></script>
+  <link rel="stylesheet" href="../css/map.css">
 </head> 
 <body>
-  <div id="map" style="width: 500px; height: 400px;"></div>
+  <div id="map"></div>
 
   <script type="text/javascript">
 	<?php session_start(); ?>
@@ -28,10 +29,12 @@
 		locations[i][3] = markerArray[i].color;
 		locations[i][4] = markerArray[i].lable;
 	}
-
+	
+    var bounds = new google.maps.LatLngBounds();
+	
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
-      center: new google.maps.LatLng(-33.92, 151.25),
+      center: new google.maps.LatLng(markerArray[0][1], markerArray[0][2]),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
@@ -46,10 +49,11 @@
 		label: locations[i][4],
         map: map
       });
-
+      bounds.extend(marker.getPosition());
+      map.fitBounds(bounds);
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i][0]);
+          infowindow.setContent(locations[i][4]);
           infowindow.open(map, marker);
         }
       })(marker, i));
