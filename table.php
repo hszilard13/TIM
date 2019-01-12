@@ -4,7 +4,8 @@
 <title>Marker table</title>
 </head>
 <body>
-<div>
+
+<div id ="table">
 <?php
 $conn=mysqli_connect("localhost","root","pwdpwd","tim_users") or die(mysqli_error());
 $result = mysqli_query($conn,"SELECT * FROM `markers`");
@@ -26,6 +27,11 @@ echo "</table>";
 session_start();
 $_SESSION['markerArray'] = $markerArray;
 $isAdmin = $_SESSION['admin'];
+$Active = $_SESSION['good_to_go'];
+if($Active != 1){
+	header("refresh:0;url = ../index.php");
+}
+$_SESSION['good_to_go'] = 0;
 ?>
 <div id = "su">
 <br>
@@ -37,27 +43,28 @@ $isAdmin = $_SESSION['admin'];
 <input type ="text" id = "label" name = "label" placeholder="Label"> 
 <input type = "submit" id = "btn" value ="Store"/>
 </form>
-<form>
+
 <form action ="php/delete_marker.php" method = "POST">
 <p> Enter marker ID to delete it!</p>
 <input type ="text" id = "del" name = "del" placeholder="ID"> 
 <input type = "submit" id = "btn" value ="Delete"/>
 </form>
-<button id="myButton" class="float-left submit-button" >Go to map!</button>
 </div>
+<button id="myButton" class="float-left submit-button" >Go to map!</button>
+
 <script type="text/javascript">
     var isAdmin = <?php echo json_encode($isAdmin); ?>;
     document.getElementById("myButton").onclick = function () {
         location.href = "/map.php";
     };
-	function myFunction() {
-    var x = document.getElementById("myDIV");
-    if (admin === "0") {
+	
+    var x = document.getElementById("su");
+    if (isAdmin === "0") {
       x.style.display = "none";
     } else {
       x.style.display = "block";
     }
-}
+
 </script>
 </div>
 
