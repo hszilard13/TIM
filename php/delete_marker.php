@@ -8,6 +8,7 @@
 		 $sql="DELETE FROM markers WHERE id='$id'";
     if(mysqli_query($conn, $sql)){
 		echo "Records were deleted successfully.";
+		header("refresh:1;url = ../table.php");
 	} else{
 		echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
