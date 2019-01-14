@@ -41,16 +41,16 @@ $_SESSION['good_to_go'] = 0;
 <input type ="text" id = "lng" name = "lng" placeholder="Lng"> 
 <input type ="text" id = "color" name = "color" placeholder="Color"> 
 <input type ="text" id = "label" name = "label" placeholder="Label"> 
-<input type = "submit" id = "btn" value ="Store"/>
+<input type = "submit" id = "store_btn"  class="button" value ="Store"/>
 </form>
 
 <form action ="php/delete_marker.php" method = "POST">
 <p> Enter marker ID to delete it!</p>
 <input type ="text" id = "del" name = "del" placeholder="ID"> 
-<input type = "submit" id = "btn" value ="Delete"/>
+<input type = "submit" id = "del_btn"  class="button" value ="Delete"/>
 </form>
 </div>
-<button id="myButton" class="float-left submit-button" >Go to map!</button>
+<button id="toMap"  class="button" >Go to map!</button>
 
 <script type="text/javascript">
     var isAdmin = <?php echo json_encode($isAdmin); ?>;

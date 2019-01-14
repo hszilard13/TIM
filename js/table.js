@@ -1,9 +1,0 @@
-function store()
-{
-
-}
-
-function delete()
-{
-
-}
