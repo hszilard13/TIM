@@ -54,7 +54,7 @@ $_SESSION['good_to_go'] = 0;
 
 <script type="text/javascript">
     var isAdmin = <?php echo json_encode($isAdmin); ?>;
-    document.getElementById("myButton").onclick = function () {
+    document.getElementById("toMap").onclick = function () {
         location.href = "/map.php";
     };
 	
