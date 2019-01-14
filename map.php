@@ -28,12 +28,12 @@
 		locations[i][2] = parseFloat(markerArray[i].lng);
 		switch(markerArray[i].color)
 		{
-			case "blue"  : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
-			case "yellow": locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
-			case "green" : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
-			case "pink"  : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/pink-dot.png";
-			case "purple": locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
-			default      : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"; 
+			case "blue"  : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"; break;
+			case "yellow": locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"; break;
+			case "green" : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"; break;
+			case "pink"  : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/pink-dot.png"; break;
+			case "purple": locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"; break;
+			default      : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";  
 		}
 		locations[i][4] = markerArray[i].lable;
 	}
