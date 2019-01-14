@@ -26,7 +26,15 @@
 		locations[i][0] = markerArray[i].name;
 		locations[i][1] = parseFloat(markerArray[i].lat);
 		locations[i][2] = parseFloat(markerArray[i].lng);
-		locations[i][3] = markerArray[i].color;
+		switch(markerArray[i].color)
+		{
+			case "blue"  : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+			case "yellow": locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
+			case "green" : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
+			case "pink"  : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/pink-dot.png";
+			case "purple": locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
+			default      : locations[i][3] = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"; 
+		}
 		locations[i][4] = markerArray[i].lable;
 	}
 	
@@ -45,7 +53,9 @@
     for (i = 0; i < locations.length; i++) {  
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-		color: locations[i][3],
+		icon: {                             
+               url: locations[i][3]                           
+			   },
 		label: locations[i][4],
         map: map
       });
